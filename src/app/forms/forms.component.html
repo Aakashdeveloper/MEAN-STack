@@ -1,0 +1,114 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body">
+        <form #form="ngForm" novalidate (submit)="submitForm(form)">
+            <div class="form-group" [class.has-error]="name.invalid && name.dirty">
+                <label class="control-label" for="name">Phone Name</label>
+                <input type="text" 
+                      name="name" 
+                      placeholder="enter phone name ( required )"
+                      id="name"
+                      required
+                      class="form-control"
+                      [ngModel]="model.name"
+                      (ngModelChange)="firstToUpper($event)"
+                      #name="ngModel">
+                      <div class="alert alert-danger" *ngIf="name.invalid && name.dirty">
+                        Please enter Name
+                      </div>
+            </div>
+            <div class="form-group" [class.has-error]="release_date.invalid && release_date.dirty">
+                <label class="control-label" for="name">Release Date</label>
+                <input type="date" 
+                      name="release_date" 
+                      placeholder="Date of Release"
+                      id="release_date"
+                      required
+                      class="form-control"
+                      [ngModel]="model.release_date"
+                      #release_date="ngModel">
+                      <div class="alert alert-danger" *ngIf="release_date.invalid && release_date.dirty">
+                        Please enter Release date
+                      </div>
+            </div>
+            <div class="form-group" [class.has-error]="ram.invalid && ram.dirty">
+                <label class="control-label" for="name">Ram </label>
+                <input type="text" 
+                      name="ram" 
+                      placeholder="Ram in gb"
+                      id="ram"
+                      required
+                      class="form-control"
+                      [(ngModel)]="model.ram"
+                      (blur)="ramWithGB($event)"
+                      #ram="ngModel">
+                      <div class="alert alert-danger" *ngIf="ram.invalid && ram.dirty">
+                        Please enter ram
+                      </div>
+            </div>
+            <div class="form-group" [class.has-error]="battery.invalid && battery.dirty">
+                <label class="control-label" for="name">Battery</label>
+                <input type="text" 
+                      name="battery" 
+                      placeholder="battery in mAh"
+                      id="battery"
+                      required
+                      class="form-control"
+                      [(ngModel)]="model.battery"
+                      (blur)="batteryWithmah($event)"
+                      #battery="ngModel">
+                      <div class="alert alert-danger" *ngIf="battery.invalid && battery.dirty">
+                        Please enter battery 
+                      </div>
+            </div>
+            <div class="form-group" [class.has-error]="screen_size.invalid && screen_size.dirty">
+                <label class="control-label" for="name">Screen Size</label>
+                <input type="text" 
+                      name="screen_size" 
+                      placeholder="Screen Size"
+                      id="screen_size"
+                      required
+                      class="form-control"
+                      [ngModel]="model.screen_size"
+                      #screen_size="ngModel">
+                      <div class="alert alert-danger" *ngIf="screen_size.invalid && screen_size.dirty">
+                        Please enter screen size 
+                      </div>
+            </div>
+            <div class="form-group" [class.has-error]="description.invalid && description.dirty">
+                <label class="control-label" for="name">Description</label>
+                <input type="text" 
+                      name="description" 
+                      placeholder="Phone Description"
+                      id="description"
+                      required
+                      class="form-control"
+                      [ngModel]="model.description"
+                      #description="ngModel">
+                      <div class="alert alert-danger" *ngIf="description.invalid && description.dirty">
+                        Please enter description 
+                      </div>
+            </div>
+            <div class="form-group" [class.has-error]="cover.invalid && cover.dirty">
+                <label class="control-label" for="name">Image Url</label>
+                <input type="url" 
+                      name="cover" 
+                      placeholder="Image url"
+                      id="cover"
+                      required
+                      class="form-control"
+                      [ngModel]="model.cover"
+                      #cover="ngModel">
+                      <div class="alert alert-danger" *ngIf="cover.invalid && cover.dirty">
+                        Please enter cover 
+                      </div>
+            </div>
+          
+          <button class="btn btn-success" 
+                  type="submit" 
+                  [disabled]="!form.valid">Submit</button>
+         </form>
+    </div>
+  </div>
+  

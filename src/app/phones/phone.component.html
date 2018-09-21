@@ -1,0 +1,52 @@
+<input class="form-control mr-sm-2 col-md-4" type="text" placeholder="Search your phone"
+    [(ngModel)]="serachPhone">
+<h4><i> Number of Phone Found : {{ (phones | filterProduct:serachPhone)?.length}} </i></h4>
+<div class="row">
+    
+    <div class="card " style="width:250px;margin-left:10%;margin-top:4%; padding:4%;" *ngFor="let phone of phones | filterProduct:serachPhone ">
+            <img class="card-img-top img-fluid" [src]="phone.cover"
+                onError="this.src='../assets/default.png';" alt="Card image"
+                style="width:180px;height:180px">
+            <div class="card-body text-center">
+                <h4 class="card-title" style="color:#0b3080">{{phone.name}}</h4>
+                <p class="card-text">{{phone.ram}} RAM</p>
+                <button type="button" class="btn btn-primary" [routerLink]="['/phone',phone.name]">
+                    Show Detail
+                </button>
+                <!--button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#'+phone.id">
+                    Open modal
+                  </button-->
+                
+                  <!-- The Modal -->
+                  <div class="modal fade" id={{phone.id}}>
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                      
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">{{phone.name}}</h4>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <p>{{phone.ram}} RAM</p>
+                            <p>{{phone.release_date}}</p>
+                            <p>{{phone.battery}}</p>
+                            <p>{{phone.screen_size}}</p>
+                            <p>{{phone.description}}</p>
+                        </div>
+                        
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+               
+               
+            </div>
+        </div>
+</div>

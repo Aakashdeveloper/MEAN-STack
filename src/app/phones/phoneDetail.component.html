@@ -1,0 +1,14 @@
+<div class="media border p-3">
+    <img [src]="phonedetail.cover" 
+    onError="this.src='../assets/default.png';" class="mr-3 mt-3"
+         style="width:400px;height:400px">
+    <div class="media-body">
+      <h1>{{phonedetail.name}}</h1>
+      <h2><i>{{phonedetail.release_date}}</i></h2>
+      <p>{{phonedetail.ram}} RAM</p>    
+      <p>{{phonedetail.battery}}</p> 
+      <p>{{phonedetail.screen_size}}inch</p>
+      <p>{{phonedetail.description}}</p> 
+    </div>
+    <button class="btn btn-dark" (click)="onBack()"><<Back</button>
+  </div>
